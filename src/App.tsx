@@ -1,3 +1,10 @@
+import { GlobalStyles } from "./styles/GlobalStyles";
+
 export function App() {
-  return <h1>Vite + React</h1>;
+  return (
+    <>
+      <GlobalStyles />
+      <h1>Vite + React</h1>
+    </>
+  );
 }
