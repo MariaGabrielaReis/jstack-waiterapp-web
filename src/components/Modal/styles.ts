@@ -100,4 +100,17 @@ export const OrderDetails = styled.div`
       }
     }
   }
+
+  .total {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  }
 `;

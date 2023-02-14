@@ -11,6 +11,10 @@ interface OrderModalProps {
 export function OrderModal({ isVisible, order }: OrderModalProps) {
   if (!isVisible || !order) return null;
 
+  const total = order.products.reduce((acumulator, { product, quantity }) => {
+    return acumulator + product.price * quantity;
+  }, 0);
+
   return (
     <Overlay>
       <Container>
@@ -57,6 +61,11 @@ export function OrderModal({ isVisible, order }: OrderModalProps) {
                 </div>
               );
             })}
+          </div>
+
+          <div className="total">
+            <span>Total</span>
+            <strong>{formatCurrency(total)}</strong>
           </div>
         </OrderDetails>
       </Container>
