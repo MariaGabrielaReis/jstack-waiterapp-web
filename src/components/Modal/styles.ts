@@ -60,4 +60,44 @@ export const OrderDetails = styled.div`
     font-size: 14px;
     opacity: 0.8;
   }
+
+  .order-items {
+    margin-top: 16px;
+
+    .item {
+      display: flex;
+
+      & + .item {
+        margin-top: 16px;
+      }
+
+      img {
+        border-radius: 6px;
+        width: 64px;
+        height: 44px;
+      }
+
+      .quantity {
+        font-size: 14px;
+        color: #666;
+        display: block;
+        min-width: 20px;
+        margin-left: 12px;
+      }
+
+      .product-details {
+        margin-left: 4px;
+
+        strong {
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        span {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
 `;
