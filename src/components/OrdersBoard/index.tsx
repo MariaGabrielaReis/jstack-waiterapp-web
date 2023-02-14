@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Order } from "../../types/Order";
+import { OrderModal } from "../Modal";
 import { Board, OrdersContainer } from "./styles";
 
 interface OrderBoardProps {
@@ -8,6 +10,12 @@ interface OrderBoardProps {
 }
 
 export function OrderBoard({ icon, title, orders }: OrderBoardProps) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  function handleOpenModal() {
+    setIsModalVisible(true);
+  }
+
   return (
     <Board>
       <header>
@@ -20,7 +28,7 @@ export function OrderBoard({ icon, title, orders }: OrderBoardProps) {
         <OrdersContainer>
           {orders.map((order) => {
             return (
-              <button type="button" key={order._id}>
+              <button type="button" key={order._id} onClick={handleOpenModal}>
                 <strong>Mesa {order.table}</strong>
                 <span>{order.products.length} items</span>
               </button>
@@ -28,6 +36,8 @@ export function OrderBoard({ icon, title, orders }: OrderBoardProps) {
           })}
         </OrdersContainer>
       )}
+
+      <OrderModal isVisible={isModalVisible} />
     </Board>
   );
 }
