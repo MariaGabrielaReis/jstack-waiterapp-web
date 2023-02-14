@@ -2,13 +2,26 @@ import { Overlay, Container, OrderDetails, Actions } from "./styles";
 import closeIcon from "../../assets/images/close-icon.svg";
 import { Order } from "../../types/Order";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { useEffect } from "react";
 
 interface OrderModalProps {
   isVisible: boolean;
   order: Order | null;
+  onClose: () => void;
 }
 
-export function OrderModal({ isVisible, order }: OrderModalProps) {
+export function OrderModal({ isVisible, order, onClose }: OrderModalProps) {
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
   if (!isVisible || !order) return null;
 
   const total = order.products.reduce((acumulator, { product, quantity }) => {
@@ -20,7 +33,7 @@ export function OrderModal({ isVisible, order }: OrderModalProps) {
       <Container>
         <header>
           <strong>Mesa {order.table}</strong>
-          <button type="button">
+          <button type="button" onClick={onClose}>
             <img src={closeIcon} alt="Ícone para fechar" />
           </button>
         </header>
