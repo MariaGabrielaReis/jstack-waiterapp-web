@@ -10,6 +10,7 @@ interface OrderModalProps {
   onClose: () => void;
   onCancelOrder: () => Promise<void>;
   isLoading: boolean;
+  onChangeOrderStatus: () => void;
 }
 
 export function OrderModal({
@@ -18,6 +19,7 @@ export function OrderModal({
   onClose,
   onCancelOrder,
   isLoading,
+  onChangeOrderStatus,
 }: OrderModalProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -91,10 +93,22 @@ export function OrderModal({
         </OrderDetails>
 
         <Actions>
-          <button type="button" className="primary" disabled={isLoading}>
-            <span>👨‍🍳</span>
-            <strong>Iniciar produção</strong>
-          </button>
+          {order.status !== "DONE" && (
+            <button
+              type="button"
+              className="primary"
+              disabled={isLoading}
+              onClick={onChangeOrderStatus}
+            >
+              <span>{order.status === "WAITING" ? "👨‍🍳" : "✅"}</span>
+              <strong>
+                {order.status === "WAITING"
+                  ? "Iniciar produção"
+                  : "Finalizar pedido"}
+              </strong>
+            </button>
+          )}
+
           <button
             type="button"
             className="secondary"
