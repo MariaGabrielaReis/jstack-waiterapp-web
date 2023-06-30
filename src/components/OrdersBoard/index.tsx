@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
 import { OrderModal } from "../Modal";
@@ -35,6 +36,7 @@ export function OrderBoard({
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await api.delete(`/orders/${selectedOrder!._id}`);
+    toast.success(`O pedido da mesa ${selectedOrder!.table} foi cancelado!`);
     onCancelOrder(selectedOrder!._id);
     setIsLoading(false);
     setIsModalVisible(false);
