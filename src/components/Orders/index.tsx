@@ -21,6 +21,10 @@ export function Orders() {
     socket.on("orders@new", (order) => {
       setOrders((prevState) => prevState.concat(order));
     });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const waiting = orders.filter((order) => order.status === "WAITING");

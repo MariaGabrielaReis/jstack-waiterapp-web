@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
 import { OrderModal } from "../Modal";
@@ -52,7 +53,7 @@ export function OrderBoard({
   async function handleCancelOrder() {
     setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     await api.delete(`/orders/${selectedOrder!._id}`);
     toast.success(`O pedido da mesa ${selectedOrder!.table} foi cancelado!`);
 
