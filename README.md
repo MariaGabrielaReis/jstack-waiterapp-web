@@ -3,7 +3,9 @@
 Frontend para o projeto WAITERAPP, um app para restaurantes que permite criar cardápios, anotar e gerenciar pedidos! 🍕 <br>
 **Aplicação construída num evento do JStack** :fire:
 
-> :hammer_and_wrench: Tecnologias e ferramentas: **TypeScript, Vite, React, Styled Components**
+> :hammer_and_wrench: Tecnologias e ferramentas: **TypeScript, Vite, React, Styled Components, Axios, Socket.io**
+
+![demo_web](https://github.com/MariaGabrielaReis/jstack-waiterapp-web/assets/69374340/7e065437-71bf-47d4-95f3-40398908bc07)
 
 ## :gear: Como rodar
 
@@ -48,5 +50,8 @@ $ yarn dev
 </details>
 
 <br>
+
+![demo](https://github.com/MariaGabrielaReis/jstack-waiterapp-web/assets/69374340/b4c69c6b-a10d-4d21-9452-4d17c9f42c99)
+
 
 [![image](https://img.shields.io/badge/✨%20Maria%20Gabriela%20Reis,%202023-LinkedIn-009973?style=flat-square)](https://www.linkedin.com/in/mariagabrielareis/)
